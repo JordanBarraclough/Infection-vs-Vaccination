@@ -4,11 +4,13 @@ import java.util.Random;
 
 public class ProgramModel extends Observable {
 	
-	final int numOfDots = 20;
+	//The number of circles
+	private final int numOfCircles = 50;
+	public final int circSize = 20; 
 	
 	//populus[x,y,(boolean for vaccinated)] //0 is not, 1 is vaccinated
-	public int[][] populus = new int[50][3];
-	private int circSize = 20;
+	public int[][] populus = new int[numOfCircles][3];
+	
 
 	public ProgramModel(){
 		
@@ -44,5 +46,9 @@ public class ProgramModel extends Observable {
 		   System.out.println("reset");
 		 setChanged(); notifyObservers(theAction);
 	  }
+	 
+	 public int[][] getPopulus(){
+		 return populus;
+	 }
 	
 }

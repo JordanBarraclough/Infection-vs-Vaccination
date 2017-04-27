@@ -15,6 +15,7 @@ public class ProgramView implements Observer{
 	private final JButton stopBt = new JButton("Stop");
 	private final JButton resetBt = new JButton("Reset");
 	private final JTextField theInputPcnt = new JTextField();
+	private final JLabel theAction  = new JLabel();
 	private DrawCanvas canvas;
 	
 	private ProgramController cont = null;
@@ -46,6 +47,10 @@ public class ProgramView implements Observer{
 		    theInputPcnt.setText("0");                           // Blank
 		    cp.add(theInputPcnt); 
 		    
+		    theAction.setBounds( 110, 25 , 270, 20 );       // Message area
+		    theAction.setText( "" );                        // Blank
+		    cp.add( theAction ); 
+		    
 		    canvas = new DrawCanvas();
 		    canvas.setBounds(10, 60, 550, 450);
 		    cp.add(canvas);
@@ -58,9 +63,13 @@ public class ProgramView implements Observer{
 
 
 	@Override
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
+	public void update(Observable modelp, Object arg) {
+		ProgramModel model = (ProgramModel) modelp;
+		String message = (String) arg;
+		theAction.setText(message);
+		canvas.setPopulus(model.getPopulus());
+		canvas.repaint();
+		theInputPcnt.requestFocusInWindow();
 	}
 	
 }
