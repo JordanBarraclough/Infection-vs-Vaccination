@@ -13,8 +13,8 @@ public class ProgramController {
 	  /**
 	   * Start the program
 	   */
-	  public void start(String pcnt){
-		  model.start(pcnt);
+	  public void start(){
+		  model.start();
 	  }
 	  
 	  public void stop(){

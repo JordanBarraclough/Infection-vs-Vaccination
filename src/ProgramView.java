@@ -30,7 +30,7 @@ public class ProgramView implements Observer{
 		    
 		    startBt.setBounds(10, 10, 80, 40);   		   // Start button 
 		    startBt.addActionListener(                     // Call back code
-		      e -> cont.start(theInputPcnt.getText()) );
+		      e -> cont.start() );
 		    cp.add(startBt); 
 		    
 		    stopBt.setBounds(100, 10, 80, 40);   		   // Start button 
@@ -40,7 +40,7 @@ public class ProgramView implements Observer{
 		    
 		    resetBt.setBounds(190, 10, 80, 40);   		   // Start button 
 		    resetBt.addActionListener(                     // Call back code
-		      e -> cont.reset("10"));
+		      e -> cont.reset(theInputPcnt.getText()));
 		    cp.add(resetBt);
 		    
 		    theInputPcnt.setBounds(280, 10, 200, 40);         // Input Area
