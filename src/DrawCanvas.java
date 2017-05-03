@@ -21,14 +21,23 @@ class DrawCanvas extends JPanel {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g); // paint background
 		setBackground(Color.white);
-		g.setColor(Color.black);
 		// This breaks if it doesn't have a populus, so make one if it's null
 		if (populus == null) {
 			initPop();
 		}
+		
 		for (int i = 0; i < populus.length; i++) {
+			if (populus[i][2] == 0) {
+				g.setColor(Color.yellow);
+			} else if (populus[i][2] == 1) {
+				g.setColor(Color.blue);
+			} else if (populus[i][2] == 2) {
+				g.setColor(Color.red);
+			}
+
 			g.fillOval(populus[i][0], populus[i][1], circSize, circSize);
 		}
+
 	}
 
 	/**

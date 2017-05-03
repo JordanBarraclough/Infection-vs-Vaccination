@@ -77,7 +77,20 @@ public class ProgramModel extends Observable {
 		for (int i = 0; i < populus.length; i++) {
 			populus[i][0] = rand.nextInt(500) + (circSize / 2);
 			populus[i][1] = rand.nextInt(400) + (circSize / 2);
+			populus[i][2] = 1;
 		}
+		// These if statements prevent the user from setting the percentage
+		// higher or lower than 100%
+		if (intPercent > 100) {
+			intPercent = 100;
+		} else if (intPercent < 0) {
+			intPercent = 0;
+		}
+		int num = (populus.length * intPercent) /100;
+		for (int i = 0; i < num; i++) {
+			populus[i][2] = 0;
+		}
+
 		setChanged();
 		notifyObservers(theAction);
 	}
