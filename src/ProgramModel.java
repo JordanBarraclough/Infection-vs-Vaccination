@@ -2,6 +2,12 @@
 import java.util.Observable;
 import java.util.Random;
 
+/**
+ * The "brains" of the program. Handles the workings of the program.
+ * 
+ * @author Jordan Barraclough
+ *
+ */
 public class ProgramModel extends Observable {
 
 	// The number of circles
@@ -14,7 +20,7 @@ public class ProgramModel extends Observable {
 	public int[][] populus = new int[numOfCircles][3];
 
 	/**
-	 * This class contains the workings for the program
+	 * The programModel constructor. (Honestly doesn't really do that much)
 	 */
 	public ProgramModel() {
 
@@ -30,43 +36,57 @@ public class ProgramModel extends Observable {
 	}
 
 	/**
-	 * Starts the program running
-	 * @param percent
+	 * Starts the program running.
 	 */
 	public void start() {
 		String theAction = "";
-
 
 		setChanged();
 		notifyObservers(theAction);
 	}
 
+	/**
+	 * Stops the program running.
+	 */
 	public void stop() {
 		// Do nothing for now
 		System.out.println("stop");
 	}
 
+	/**
+	 * Resets the circles on the screen.
+	 * 
+	 * @param percent
+	 *            The percentage of the circles which are vaccinated.
+	 */
 	public void reset(String percent) {
 		String theAction = "";
 		int intPercent = 0;
-		boolean real = false;
+		// Try catch to get the value of the percentage. This is here to prevent
+		// the program breaking if the user decides to do something stupid like
+		// put in words
 		try {
 			intPercent = Integer.valueOf(percent);
-			
+
 		} catch (NumberFormatException e) {
-			System.out.println("false");
 		}
-		System.out.println(intPercent);
+		// Calls the java random integer class to provide random integers for
+		// the location of the populus.
 		Random rand = new Random();
+		// loop through and populate the array
 		for (int i = 0; i < populus.length; i++) {
 			populus[i][0] = rand.nextInt(500) + (circSize / 2);
 			populus[i][1] = rand.nextInt(400) + (circSize / 2);
 		}
-		System.out.println("reset");
 		setChanged();
 		notifyObservers(theAction);
 	}
 
+	/**
+	 * Used to retrieve the populus array.
+	 * 
+	 * @return The populus array.
+	 */
 	public int[][] getPopulus() {
 		return populus;
 	}

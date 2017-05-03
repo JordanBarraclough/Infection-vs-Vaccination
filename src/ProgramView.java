@@ -5,62 +5,76 @@ import java.util.Observer;
 import javax.swing.*;
 import javax.swing.RootPaneContainer;
 
+/**
+ * The view class, used for anything that is being produce to the screen.
+ * 
+ * @author Jordan Barraclough
+ *
+ */
+public class ProgramView implements Observer {
+	// The height and width of the JFrame
+	private static final int HEIGHT = 600; // Height of window
+	private static final int WIDTH = 600; // Width of window
 
-public class ProgramView implements Observer{
-
-	private static final int HEIGHT = 600;       // Height of window pixels
-	private static final int WIDTH = 600;       // Width  of window pixels
-	
+	// The buttons, text field, label and canvas for the program.
 	private final JButton startBt = new JButton("Start");
 	private final JButton stopBt = new JButton("Stop");
 	private final JButton resetBt = new JButton("Reset");
 	private final JTextField theInputPcnt = new JTextField();
-	private final JLabel theAction  = new JLabel();
+	private final JLabel theAction = new JLabel();
 	private DrawCanvas canvas;
-	
-	private ProgramController cont = null;
-	
-	public ProgramView(RootPaneContainer rpc){
-		
-		 Container cp         = rpc.getContentPane();    // Content Pane
-		    Container rootWindow = (Container) rpc;         // Root Window
-		    cp.setLayout(null);                             // No layout manager
-		    rootWindow.setSize(WIDTH, HEIGHT);                     // Size of Window
-		    
-		    
-		    startBt.setBounds(10, 10, 80, 40);   		   // Start button 
-		    startBt.addActionListener(                     // Call back code
-		      e -> cont.start() );
-		    cp.add(startBt); 
-		    
-		    stopBt.setBounds(100, 10, 80, 40);   		   // Start button 
-		    stopBt.addActionListener(                     // Call back code
-		      e -> cont.stop() );
-		    cp.add(stopBt);
-		    
-		    resetBt.setBounds(190, 10, 80, 40);   		   // Start button 
-		    resetBt.addActionListener(                     // Call back code
-		      e -> cont.reset(theInputPcnt.getText()));
-		    cp.add(resetBt);
-		    
-		    theInputPcnt.setBounds(280, 10, 200, 40);         // Input Area
-		    theInputPcnt.setText("0");                           // Blank
-		    cp.add(theInputPcnt); 
-		    
-		    theAction.setBounds( 110, 25 , 270, 20 );       // Message area
-		    theAction.setText( "" );                        // Blank
-		    cp.add( theAction ); 
-		    
-		    canvas = new DrawCanvas();
-		    canvas.setBounds(10, 60, 550, 450);
-		    cp.add(canvas);
-	}
-	
-	
-	public void setController(ProgramController c) {
-	    cont = c;
-	  }
 
+	private ProgramController cont = null;
+
+	/**
+	 * This class is used for everything that is going to be drawn to the
+	 * screen.
+	 * 
+	 * @param rpc
+	 *            The container which this view is going to be drawing to.
+	 */
+	public ProgramView(RootPaneContainer rpc) {
+
+		Container cp = rpc.getContentPane(); // Content Pane
+		Container rootWindow = (Container) rpc; // Root Window
+		cp.setLayout(null); // No layout manager
+		rootWindow.setSize(WIDTH, HEIGHT); // Size of Window
+
+		startBt.setBounds(10, 10, 80, 40); // Start button
+		startBt.addActionListener( // Call back code
+				e -> cont.start());
+		cp.add(startBt);
+
+		stopBt.setBounds(100, 10, 80, 40); // Start button
+		stopBt.addActionListener( // Call back code
+				e -> cont.stop());
+		cp.add(stopBt);
+
+		resetBt.setBounds(190, 10, 80, 40); // Start button
+		resetBt.addActionListener( // Call back code
+				e -> cont.reset(theInputPcnt.getText()));
+		cp.add(resetBt);
+
+		theInputPcnt.setBounds(280, 10, 200, 40); // Input Area
+		theInputPcnt.setText("0"); // Start with a nice 0 in the box
+		cp.add(theInputPcnt);
+
+		theAction.setBounds(110, 25, 270, 20); // Message area
+		theAction.setText(""); // Blank
+		cp.add(theAction);
+
+		canvas = new DrawCanvas(); // Canvas area
+		canvas.setBounds(10, 60, 550, 450); // Sets the position and size of the canvas to be drawn.
+		cp.add(canvas);
+	}
+
+	/**
+	 * Sets the controller so that it can be used to relay information by the view.
+	 * @param c
+	 */
+	public void setController(ProgramController c) {
+		cont = c;
+	}
 
 	@Override
 	public void update(Observable modelp, Object arg) {
@@ -71,5 +85,5 @@ public class ProgramView implements Observer{
 		canvas.repaint();
 		theInputPcnt.requestFocusInWindow();
 	}
-	
+
 }
