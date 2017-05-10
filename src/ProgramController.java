@@ -10,7 +10,6 @@ public class ProgramController {
 	// Holds the model and the view so that information cab be sent between the
 	// two when needed.
 	private ProgramModel model = null;
-	private ProgramView view = null;
 
 	/**
 	 * Initialises the controller.
@@ -21,7 +20,6 @@ public class ProgramController {
 	 *            The view to control,
 	 */
 	public ProgramController(ProgramModel model, ProgramView view) {
-		this.view = view;
 		this.model = model;
 	}
 

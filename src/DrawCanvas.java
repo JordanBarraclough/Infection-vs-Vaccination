@@ -1,7 +1,5 @@
 import java.awt.*;
-import java.util.*;
 import javax.swing.*;
-import java.util.Random;
 
 /**
  * This class is used to draw the canvas and circles onto the screen below the
@@ -12,6 +10,10 @@ import java.util.Random;
  */
 class DrawCanvas extends JPanel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	// The array to be drawn
 	private int[][] populus = null;
 	// The size of the circles
