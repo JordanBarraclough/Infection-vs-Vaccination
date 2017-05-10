@@ -54,8 +54,8 @@ public class ProgramView implements Observer {
 		theInputPcnt.setText("0"); // Start with a nice 0 in the box
 		cp.add(theInputPcnt);
 		
-		descript.setBounds(190, 10, 150, 40);
-		descript.setText("Vaccinated percentage:");
+		descript.setBounds(190, 10, 150, 40); // Description Area
+		descript.setText("Vaccinated percentage:"); // Description text
 		cp.add(descript);
 
 		theAction.setBounds(110, 25, 270, 20); // Message area
