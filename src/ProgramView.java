@@ -17,10 +17,10 @@ public class ProgramView implements Observer {
 	private static final int WIDTH = 600; // Width of window
 
 	// The buttons, text field, label and canvas for the program.
-	private final JButton startBt = new JButton("Start");
-	private final JButton stopBt = new JButton("Stop");
+	private final JButton runBt = new JButton("Run");
 	private final JButton resetBt = new JButton("Reset");
 	private final JTextField theInputPcnt = new JTextField();
+	private final JLabel descript = new JLabel();
 	private final JLabel theAction = new JLabel();
 	private DrawCanvas canvas;
 
@@ -40,24 +40,23 @@ public class ProgramView implements Observer {
 		cp.setLayout(null); // No layout manager
 		rootWindow.setSize(WIDTH, HEIGHT); // Size of Window
 
-		startBt.setBounds(10, 10, 80, 40); // Start button
-		startBt.addActionListener( // Call back code
+		runBt.setBounds(10, 10, 80, 40); // Start button
+		runBt.addActionListener( // Call back code
 				e -> cont.start());
-		cp.add(startBt);
+		cp.add(runBt);
 
-		stopBt.setBounds(100, 10, 80, 40); // Start button
-		stopBt.addActionListener( // Call back code
-				e -> cont.stop());
-		cp.add(stopBt);
-
-		resetBt.setBounds(190, 10, 80, 40); // Start button
+		resetBt.setBounds(100, 10, 80, 40); // Start button
 		resetBt.addActionListener( // Call back code
 				e -> cont.reset(theInputPcnt.getText()));
 		cp.add(resetBt);
 
-		theInputPcnt.setBounds(280, 10, 200, 40); // Input Area
+		theInputPcnt.setBounds(350, 10, 100, 40); // Input Area
 		theInputPcnt.setText("0"); // Start with a nice 0 in the box
 		cp.add(theInputPcnt);
+		
+		descript.setBounds(190, 10, 150, 40);
+		descript.setText("Vaccinated percentage:");
+		cp.add(descript);
 
 		theAction.setBounds(110, 25, 270, 20); // Message area
 		theAction.setText(""); // Blank

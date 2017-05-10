@@ -33,13 +33,6 @@ public class ProgramController {
 	}
 
 	/**
-	 * Stops the program running the process.
-	 */
-	public void stop() {
-		model.stop();
-	}
-
-	/**
 	 * Resets the location of the circles on the screen.
 	 * 
 	 * @param percent
