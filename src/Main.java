@@ -2,7 +2,7 @@ import javax.swing.JFrame;
 
 /**
  * The main method for the program. Does simple setup/initialisation stuff for
- * the PMV model.
+ * the MVC architecture.
  */
 public class Main {
 
